@@ -5,7 +5,4 @@ load_dotenv()
 
 BOT_TOKEN = str(os.getenv("BOT_TOKEN"))
 
-admins_id = [
-    1911890973,
-    829894458
-]
+admins_id = map(int, os.getenv("ADMIN_IDS").split(","))
