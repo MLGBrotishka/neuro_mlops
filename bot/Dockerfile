@@ -1,9 +1,9 @@
 FROM python
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -U aiogram \
-    pip install --no-cache-dir python-dotenv \
-    pip install --no-cache-dir kafka-python
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -U aiogram
+RUN pip install --no-cache-dir python-dotenv
+RUN pip install --no-cache-dir kafka-python
 
 WORKDIR /bot/
 
