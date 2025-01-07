@@ -60,12 +60,12 @@ services:
     networks: 
      - rmoff_kafka
     deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+      # resources:
+      #   reservations:
+      #     devices:
+      #       - driver: nvidia
+      #         count: 1
+      #         capabilities: [gpu]
     entrypoint:
      - bash 
      - -c 
