@@ -4,7 +4,7 @@
 
 Бот развернут на Cloud.ru ID VM: c5c7c153-e79e-4ff5-a986-c6bf63463048
 
-Тег в телеграме [@MAINeuroML_bot](t.me/MAINeuroML_bot) 
+Тег в телеграме [@MAINeuroML_bot](https://t.me/MAINeuroML_bot) 
 
 - [Презентация проекта](presentation/Prompt2Pic_raw.pdf)
 
