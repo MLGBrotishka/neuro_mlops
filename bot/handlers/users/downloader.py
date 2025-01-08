@@ -10,10 +10,10 @@ from aiokafka import AIOKafkaConsumer, AIOKafkaProducer
 @dp.message_handler(Command('txt2img'))
 async def txt2img_(message: Message):
     await message.answer('Введите описание изображения')
-    await txt2img.test1.set()
+    await txt2img.state1.set()
 
 
-@dp.message_handler(state=txt2img.test1)
+@dp.message_handler(state=txt2img.state1)
 async def state1(message: Message, state: FSMContext):
     text = message.text
     message_id = message.message_id
@@ -29,7 +29,9 @@ async def state1(message: Message, state: FSMContext):
     await state.finish()
     await message.answer('Ваш запрос обрабатывается')
     async for message in consumer:
-        if (message.key == key):
+        if message.key == key:
             path_to_file = message.value.decode("utf-8")
             break
     await dp.bot.send_photo(chat_id=chat_id, photo=path_to_file)
+    await producer.stop()
+    await consumer.stop()

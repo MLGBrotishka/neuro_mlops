@@ -1,1 +1,1 @@
-from .test import txt2img
+from .txt2img import txt2img

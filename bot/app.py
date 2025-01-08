@@ -1,18 +1,24 @@
-import sys
+import logging
+
+from aiogram import executor
+from handlers import dp
+from utils.set_bot_commands import set_default_commands
+from utils.notify_admins import on_startup_notify
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
 
 
-async def on_startup(dp):
-    from utils.notify_admins import on_startup_notify
-    await on_startup_notify(dp)
+async def on_startup(dispatcher):
+    await on_startup_notify(dispatcher)
+    await set_default_commands(dispatcher)
 
-    from utils.set_bot_commands import set_default_commands
-    await set_default_commands(dp)
-
-    print('Кто-то использует бота!\n')
+    logger.info("Bot started")
 
 
 if __name__ == '__main__':
-    from aiogram import executor
-    from handlers import dp
-
     executor.start_polling(dp, on_startup=on_startup)

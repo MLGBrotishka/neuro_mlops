@@ -1,5 +1,9 @@
+import logging
 from aiogram import types
 from loader import dp
+
+logger = logging.getLogger(__name__)
+
 
 @dp.message_handler(text='/help')
 async def command_start(message: types.Message):
@@ -8,4 +12,4 @@ async def command_start(message: types.Message):
                          f'Для этого воспользуйся командой /txt2img.\n '
                          f'Помни, что делать свой запрос нужно на английском языке')
 
-    print('Из help ', message.from_user.id)
+    logger.info("help command for %s", message.from_user.id)
